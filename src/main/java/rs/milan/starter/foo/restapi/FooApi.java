@@ -3,6 +3,7 @@ package rs.milan.starter.foo.restapi;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +11,7 @@ import rs.milan.starter.foo.service.FooDto;
 import rs.milan.starter.foo.service.FooService;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 /**
  * You may also check out Spring REST docs
@@ -26,13 +28,14 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/foos")
+@Async
 public class FooApi {
 
     private final FooService fooService;
 
     @Operation(summary = "List all foos", description = "Lists all available foos")
     @GetMapping()
-    public List<FooDto> getFoos() {
+    public CompletableFuture<List<FooDto>> getFoos() {
         return fooService.fetchAllFoos();
     }
 }
