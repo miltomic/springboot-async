@@ -16,7 +16,7 @@ After all services in are started by docker compose just trigger Gradle ```bootR
 * ```./gradlew bootRun``` on Linux environments
 * ```gradlew bootRun``` on Windows
 
-Verify service is running by hitting the GET HTTP request against http://localhost:8080/starter/foos
+You can see available endpoints on http://localhost:8080/starter/swagger-ui/index.html
 
 ## Built With
 
